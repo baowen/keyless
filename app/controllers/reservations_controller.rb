@@ -13,7 +13,7 @@ class ReservationsController < ApplicationController
     # Send a text message
     # Any phone number that starts with 999 is a test phone number
     # The phones parameter can contain more than one number (comma delimited)
-    params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', The code for your room entry is '+@reservation.pinnumber+' please make a note of this.'}
+    params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', The code for your room entry is '+@reservation.pinnumber+' please make a note of this. It will be valid for the next 20 hours'}
 
     # This next line creates and sends the message
     sent_message = client.messages.create(params)
