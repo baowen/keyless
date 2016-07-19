@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customername: MyString
+  location: MyString
+  roomnumber: MyString
+  startdatetime: 2016-07-19 19:50:31
+  enddatetime: 2016-07-19 19:50:31
+  pinnumber: MyString
+  mobile: MyString
+  cleanername: MyString
+  roomtype: MyString
+
+two:
+  customername: MyString
+  location: MyString
+  roomnumber: MyString
+  startdatetime: 2016-07-19 19:50:31
+  enddatetime: 2016-07-19 19:50:31
+  pinnumber: MyString
+  mobile: MyString
+  cleanername: MyString
+  roomtype: MyString

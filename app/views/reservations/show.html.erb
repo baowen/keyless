@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customername:</strong>
+  <%= @reservation.customername %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @reservation.location %>
+</p>
+
+<p>
+  <strong>Roomnumber:</strong>
+  <%= @reservation.roomnumber %>
+</p>
+
+<p>
+  <strong>Startdatetime:</strong>
+  <%= @reservation.startdatetime %>
+</p>
+
+<p>
+  <strong>Enddatetime:</strong>
+  <%= @reservation.enddatetime %>
+</p>
+
+<p>
+  <strong>Pinnumber:</strong>
+  <%= @reservation.pinnumber %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @reservation.mobile %>
+</p>
+
+<p>
+  <strong>Cleanername:</strong>
+  <%= @reservation.cleanername %>
+</p>
+
+<p>
+  <strong>Roomtype:</strong>
+  <%= @reservation.roomtype %>
+</p>
+
+<%= link_to 'Edit', edit_reservation_path(@reservation) %> |
+<%= link_to 'Back', reservations_path %>

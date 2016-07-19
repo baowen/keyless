@@ -1,0 +1,53 @@
+<%= form_for(@reservation) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+
+      <ul>
+      <% @reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :customername %><br>
+    <%= f.text_field :customername %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :roomnumber %><br>
+    <%= f.text_field :roomnumber %>
+  </div>
+  <div class="field">
+    <%= f.label :startdatetime %><br>
+    <%= f.datetime_select :startdatetime %>
+  </div>
+  <div class="field">
+    <%= f.label :enddatetime %><br>
+    <%= f.datetime_select :enddatetime %>
+  </div>
+  <div class="field">
+    <%= f.label :pinnumber %><br>
+    <%= f.text_field :pinnumber %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile %><br>
+    <%= f.text_field :mobile %>
+  </div>
+  <div class="field">
+    <%= f.label :cleanername %><br>
+    <%= f.text_field :cleanername %>
+  </div>
+  <div class="field">
+    <%= f.label :roomtype %><br>
+    <%= f.text_field :roomtype %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
