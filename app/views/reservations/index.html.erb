@@ -2,14 +2,14 @@
 
 <h1>Listing Reservations</h1>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-inverse">
     <tr>
-      <th>Customername</th>
+      <th>Customer Name</th>
       <th>Location</th>
       <th>Roomnumber</th>
-      <th>Startdatetime</th>
-      <th>Enddatetime</th>
+      <th>Check in</th>
+      <th>Check out</th>
       <th>Pinnumber</th>
       <th>Mobile</th>
       <th>Cleanername</th>
@@ -30,9 +30,9 @@
         <td><%= reservation.mobile %></td>
         <td><%= reservation.cleanername %></td>
         <td><%= reservation.roomtype %></td>
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', reservation, class: "btn btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_reservation_path(reservation), class: "btn btn-primary" %></td>
+        <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Reservation', new_reservation_path %>
+<%= link_to 'New Reservation', new_reservation_path, class: "btn btn-primary" %>
