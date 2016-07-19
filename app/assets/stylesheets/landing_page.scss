@@ -1,0 +1,54 @@
+// Place all the styles related to the LandingPage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: white;
+    border-bottom: 1px solid black;
+    border-radius: 0px 0px 0px 0px;
+}
+
+.center-block {
+  text-align:center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.big-banner { 
+  background: image-url('index.jpeg') no-repeat bottom center;
+  background-size: 100%;
+  align-items: center;
+  height: 250px; 
+  border-radius: 0px 0px 0.3rem 0.3rem;
+ }
+
+.row {
+  width: 100%;
+  margin: 0px;
+}
+
+.card-img-top {
+  height: 100px;
+  width: 100%;
+  display: block;
+  padding: 0px;
+}
+
+.card {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.status-text {
+  text-align: center; 
+  font-size: 35px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+}
