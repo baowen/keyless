@@ -12,6 +12,11 @@ class ReservationsController < ApplicationController
   def show
   end
 
+  # GET /reservations/customer_view
+  def customer_view
+    @reservation = Reservation.new
+  end
+
   # GET /reservations/new
   def new
     @reservation = Reservation.new
