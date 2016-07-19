@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :reservations
+  root 'reservations#customer_view'
+  get 'reservations/customer_view' => 'reservations#customer_view'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
