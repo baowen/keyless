@@ -14,7 +14,7 @@
       <th>Mobile</th>
       <th>Cleanername</th>
       <th>Roomtype</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -33,10 +33,13 @@
         <td><%= link_to 'Show', reservation, class: "btn btn-primary" %></td>
         <td><%= link_to 'Edit', edit_reservation_path(reservation), class: "btn btn-primary" %></td>
         <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+        <td><%=  button_to 'Resend SMS', send_text_message_path(reservation), method: :put, remote: true, class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<br>
 
 <br>
 
