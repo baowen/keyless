@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Keyless</title>
+  <title>Whitbread</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+
+    <nav class="navbar navbar-static-top navbar-dark bg-inverse navbar-custom">
+    	<%= image_tag "whitbread.png", class: "some css class here" %>
+    </nav>
+
+    <div class="jumbotron big-banner">
+      <div class="container">
+        <h1 class="display-3"></h1>
+
+      </div>
+    </div>
 
 <%= yield %>
 
