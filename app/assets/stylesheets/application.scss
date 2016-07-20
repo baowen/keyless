@@ -13,3 +13,37 @@
  */
 @import "bootstrap";
 @import "landing_page";
+
+// body {
+//   font-family: 'Martel Sans', sans-serif;
+//   font-weight: 400;
+// }
+
+#font {
+  font-family: 'Martel Sans', sans-serif;
+  font-weight: 400;
+  color: #363636;
+}
+
+#fontwhite {
+  color: #ffffff;
+}
+
+#navbar {
+  // border: 1px solid #aaa;
+  border: none;
+}
+
+.border {
+  background-color: #aaa;
+  height: 1px;
+  width: 100%;
+}
+
+.checkinbackground {
+  background: image-url("cabinbackground.png") no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;
+}
+
+#input1 {
+  height: 60px;
+}
