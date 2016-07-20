@@ -13,13 +13,13 @@
 
   <div class="col-xs-12" id="fieldgroup">
     <!-- <%= f.label :customername %><br> -->
-    <%= f.text_field :customername, :placeholder => "Your first name", :id => "input1", :class => "form-control" %>
+    <%= f.text_field :customername, :placeholder => "Your first name", :id => "input1", :class => "form-control center-block" %>
   </div>
   <!-- <div class="col-xs-12" id="fieldgroup"> -->
     <!-- <%= f.label :mobile %><br> -->
     <!-- <%= f.text_field :mobile %> -->
   <!-- </div> -->
   <div class="col-xs-12" id="buttongroup">
-    <%= f.submit "Check In" %>
+    <%= f.submit "Check In", :id => "submitbutton", :class => "center-block" %>
   </div>
 <% end %>
