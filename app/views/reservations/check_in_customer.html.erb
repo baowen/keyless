@@ -3,14 +3,16 @@
 <div class="container">
   <div class="row">
     <div id="white" class="col-xs-12">
-<h3 id="checkedintitle">You're checked in</h3>
+<h1 id="checkedintitle">You're checked in <i id="smiley" class="fa fa-smile-o" aria-hidden="true"></i></h1>
 
-<span>
-  <%= @reservation.roomnumber %>
-</span>
+<h3 id="entry">Your room number: <%= @reservation.roomnumber %></h3>
+<h3 id="entry">Your room's pin: <%= @reservation.pinnumber %></h3>
 
-<p>
-  <strong>Customer Name:</strong>
+<div class="border">
+</div>
+
+<p id="topentry">
+  <strong>Your name:</strong>
   <%= @reservation.customername %>
 </p>
 
@@ -20,17 +22,12 @@
 </p>
 
 <p>
-  <strong>Room Number:</strong>
-  <%= @reservation.roomnumber %>
-</p>
-
-<p>
-  <strong>Check In Date:</strong>
+  <strong>Check in:</strong>
   <%= @reservation.startdatetime %>
 </p>
 
 <p>
-  <strong>Check Out Date:</strong>
+  <strong>Check out:</strong>
   <%= @reservation.enddatetime %>
 </p>
 
@@ -43,11 +40,11 @@
   <strong>Mobile:</strong>
   <%= @reservation.mobile %>
 </p>
-
+<!--
 <p>
   <strong>Cleanername:</strong>
   <%= @reservation.cleanername %>
-</p>
+</p> -->
 
 <p>
   <strong>Roomtype:</strong>
