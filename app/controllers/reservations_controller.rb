@@ -108,9 +108,9 @@ class ReservationsController < ApplicationController
     @reservation.roomnumber = 200 + rand(299)
     @reservation.pinnumber = 1 + rand(9999)
 
-    response_str = '{  "roomnumber": "210", "pinnumber": "654321" }'
+    response_str = '{  "roomnumber": "'+@reservation.roomnumber+'", "pinnumber": "'+@reservation.pinnumber+'" }'
 
-#    update_data(response_str)
+    update_data(response_str)
     puts "Phone Number " << @reservation.mobile
     send_reservation_sms
 
