@@ -1,3 +1,6 @@
+require 'rest-client'
+require 'json'
+
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy, :display_reservation_details, :check_in_customer, :send_text_message]
 
@@ -13,6 +16,18 @@ class ReservationsController < ApplicationController
   def get_received_messages
 
      
+
+  end
+
+  def send_reservation_sms
+
+      puts "***********   " + @reservation.mobile
+
+      client = Textmagic::REST::Client.new 'benowen', 'UMVvGqt5y6ftjSx0FcGyzyBZJryPRG'
+
+      params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', Your reservation has been successful.'}
+
+      sent_message = client.messages.create(params)
 
   end
 
@@ -82,9 +97,19 @@ class ReservationsController < ApplicationController
   end
 
   def add_res
+
+
+    
+
     @reservation = Reservation.new(reservation_params)
     @reservation.roomnumber = 200 + rand(299)
     @reservation.pinnumber = 1 + rand(9999)
+
+    response_str = '{  "roomnumber": "210", "pinnumber": "654321" }'
+
+#    update_data(response_str)
+
+    send_reservation_sms
 
     respond_to do |format|
       if @reservation.save
@@ -95,6 +120,14 @@ class ReservationsController < ApplicationController
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def update_data(response_str)
+
+     response_json = JSON.parse(response_str)
+     puts_response = RestClient.post("http://pricefighter.enablingdigital.co.uk/reservations.json",
+         response_json.to_json,      # Re-encode the entire incident as JSON
+         {:content_type => 'application/json'})
   end
 
   def check_in
