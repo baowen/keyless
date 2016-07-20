@@ -21,11 +21,15 @@ class ReservationsController < ApplicationController
 
   def send_reservation_sms
 
-      puts "***********   " + @reservation.mobile
+#      puts "***********   " + @reservation.mobile
 
       client = Textmagic::REST::Client.new 'benowen', 'UMVvGqt5y6ftjSx0FcGyzyBZJryPRG'
 
-      params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', Your reservation has been successful.'}
+      mobile = "+44"+@reservation.mobile[1..-1]
+
+      puts "***********    "+mobile
+
+      params = {phones: mobile, text: 'Hello '+@reservation.customername+', Your reservation has been successful.'}
 
       sent_message = client.messages.create(params)
 
@@ -39,10 +43,13 @@ class ReservationsController < ApplicationController
 
     client = Textmagic::REST::Client.new 'benowen', 'UMVvGqt5y6ftjSx0FcGyzyBZJryPRG'
 
+
+    mobile = "+44"+@reservation.mobile[1..-1]
+
     # Send a text message
     # Any phone number that starts with 999 is a test phone number
     # The phones parameter can contain more than one number (comma delimited)
-    params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', The code for your room entry is '+@reservation.pinnumber+' please make a note of this. It will be valid 11am tomorrow'}
+    params = {phones: mobile, text: 'Hello '+@reservation.customername+', The code for your room entry is '+@reservation.pinnumber+' please make a note of this. It will be valid 11am tomorrow'}
 
     # This next line creates and sends the message
     sent_message = client.messages.create(params)
@@ -111,6 +118,8 @@ class ReservationsController < ApplicationController
 
     send_reservation_sms
 
+#    send_text_message
+
     respond_to do |format|
       if @reservation.save
         format.html { redirect_to check_in_url, notice: 'Reservation was successfully updated.' }
@@ -132,13 +141,17 @@ class ReservationsController < ApplicationController
 
   def check_in
     @reservation = Reservation.new
+
   end
 
   def check_in_customer
-    @reservation = Reservation.where(customername: reservation_params[:customername], mobile: reservation_params[:mobile]).first 
+
+    @reservation = Reservation.where(customername: reservation_params[:customername], mobile: reservation_params[:mobile]).first
+     
     if @reservation.nil?
       redirect_to check_in_path, notice: 'Reservation Not Found, please check reservation details.'
     else
+      send_text_message
       render action: 'check_in_customer', notice: 'Reservation was Successfully Found.'
     end
   end
