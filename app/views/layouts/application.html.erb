@@ -40,7 +40,7 @@
 </footer>
 
 <div class="container">
-  <span class="text-muted"><%= link_to "Customer Online Reserve", root_path(@profile), class: "btn btn-primary" %> <%= link_to "Customer Onsite Check In", check_in_path, class: "btn btn-primary" %> </span>
+  <span class="text-muted"><%= link_to "Customer Online Reserve", root_path(@profile), class: "btn btn-primary" %> <%= link_to "Customer Onsite Check In", check_in_path, class: "btn btn-primary" %> <%= link_to "Front Desk View", reservations_path, class: "btn btn-primary" %> <%= link_to "Monitor SMS Requests", smsrequests_path, class: "btn btn-primary" %></span>
 </div>
 
 </body>
