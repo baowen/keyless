@@ -5,12 +5,7 @@ class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy, :display_reservation_details, :send_text_message]
 
   def check_in_customer
-
-
-
-
-     redirect_to reservations_url
-
+    redirect_to reservations_url
   end
 
   def get_received_messages
@@ -102,13 +97,14 @@ class ReservationsController < ApplicationController
     
 
     @reservation = Reservation.new(reservation_params)
+    @reservation.mobile = @reservation.mobile.gsub(/\s+/, "")
     @reservation.roomnumber = 200 + rand(299)
     @reservation.pinnumber = 1 + rand(9999)
 
     response_str = '{  "roomnumber": "210", "pinnumber": "654321" }'
 
 #    update_data(response_str)
-
+    puts "Phone Number " << @reservation.mobile
     send_reservation_sms
 
     respond_to do |format|
@@ -135,7 +131,7 @@ class ReservationsController < ApplicationController
   end
 
   def check_in_customer
-    @reservation = Reservation.where(customername: reservation_params[:customername], mobile: reservation_params[:mobile]).first 
+    @reservation = Reservation.where(customername: reservation_params[:customername]).first 
     if @reservation.nil?
       redirect_to check_in_path, notice: 'Reservation Not Found, please check reservation details.'
     else
