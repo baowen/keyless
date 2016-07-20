@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :reservations
   root 'reservations#customer_view'
   get 'reservations/customer_view' => 'reservations#customer_view'
+  get 'check_in' => 'reservations#check_in'
+  post 'check_in_customer' => 'reservations#check_in_customer'
+  post 'reservations/add_res' => 'reservations#add_res'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
