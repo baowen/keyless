@@ -1,6 +1,39 @@
 class SmsrequestsController < ApplicationController
   before_action :set_smsrequest, only: [:show, :edit, :update, :destroy]
 
+  def getsmslist
+
+      @smsrequests = []
+
+      client = Textmagic::REST::Client.new 'benowen', 'UMVvGqt5y6ftjSx0FcGyzyBZJryPRG'
+
+      received_messages = client.replies.list()
+      if received_messages.resources.length == 0
+         puts 'We haven\'t received any SMS messages with our TextMagic account yet'
+      else
+         received_messages.resources.each do |rm|
+
+           request = Smsrequest.new
+           request.mobile = rm.sender
+           request.message = rm.text
+  
+           @smsrequests.push(request)
+           
+
+           puts "The received message text: #{rm.text}"
+           puts "The message was sent from: #{rm.sender}"
+           puts ''
+       end
+    end
+
+    
+
+#      @smsrequests = Smsrequest.all
+
+
+
+  end
+
   # GET /smsrequests
   # GET /smsrequests.json
   def index
