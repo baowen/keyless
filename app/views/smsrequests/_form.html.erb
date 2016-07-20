@@ -1,0 +1,25 @@
+<%= form_for(@smsrequest) do |f| %>
+  <% if @smsrequest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@smsrequest.errors.count, "error") %> prohibited this smsrequest from being saved:</h2>
+
+      <ul>
+      <% @smsrequest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mobile %><br>
+    <%= f.text_field :mobile %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_field :message %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
