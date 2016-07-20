@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
 <p id="notice"><%= notice %></p>
 
 <h3>Reservation Found</h3>
@@ -38,14 +41,47 @@
 </p>
 
 <p>
-  <strong>Cleanername:</strong>
-  <%= @reservation.cleanername %>
-</p>
-
-<p>
   <strong>Roomtype:</strong>
   <%= @reservation.roomtype %>
 </p>
 
 <%= link_to 'Edit', edit_reservation_path(@reservation) %> |
 <%= link_to 'Back', reservations_path %>
+<p></p>
+<p></p>
+<p></p>
+
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Product</th>
+      <th></th>
+      <th>Cost</th>
+      <th>Purchase</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Breakfast</th>
+      <td><%= image_tag('breakfast.jpg', class: "menu_icon") %></td>
+      <td>£3.20</td>
+      <td><a class="btn btn-primary" href="#" role="button">Buy</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Extra Towels</th>
+      <td><%= image_tag('towels.jpg', class: "menu_icon") %></td>
+      <td>£2.50</td>
+      <td><a class="btn btn-primary" href="#" role="button">Buy</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Get Your Room Cleaned</th>
+      <td><%= image_tag('cleaning.jpg', class: "menu_icon") %></td>
+      <td>£5.00</td>
+      <td><a class="btn btn-primary" href="#" role="button">Buy</a></td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+  </div>
+</div>
