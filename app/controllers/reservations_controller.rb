@@ -1,6 +1,14 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: [:show, :edit, :update, :destroy, :send_text_message]
 
+  def check_in_customer
+
+
+
+
+     redirect_to reservations_url
+
+  end
 
   def send_text_message
 
@@ -13,7 +21,7 @@ class ReservationsController < ApplicationController
     # Send a text message
     # Any phone number that starts with 999 is a test phone number
     # The phones parameter can contain more than one number (comma delimited)
-    params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', The code for your room entry is '+@reservation.pinnumber+' please make a note of this. It will be valid for the next 20 hours'}
+    params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', The code for your room entry is '+@reservation.pinnumber+' please make a note of this. It will be valid 11am tomorrow'}
 
     # This next line creates and sends the message
     sent_message = client.messages.create(params)
