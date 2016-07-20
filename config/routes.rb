@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :smsrequests
   resources :reservations
   root 'reservations#customer_view'
   get 'reservations/customer_view' => 'reservations#customer_view'
@@ -6,6 +7,11 @@ Rails.application.routes.draw do
   post 'check_in_customer' => 'reservations#check_in_customer'
   post 'reservations/add_res' => 'reservations#add_res'
   put "/sendsms/:id" => 'reservations#send_text_message', as: 'send_text_message'
+
+
+  get "/getsmslist" => 'smsrequests#getsmslist', as: 'getsmslist'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

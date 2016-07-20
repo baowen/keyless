@@ -1,6 +1,35 @@
-class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :display_reservation_details, :check_in_customer, :send_text_message]
+require 'rest-client'
+require 'json'
 
+class ReservationsController < ApplicationController
+  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :display_reservation_details, :send_text_message]
+
+  def check_in_customer
+
+
+
+
+     redirect_to reservations_url
+
+  end
+
+  def get_received_messages
+
+     
+
+  end
+
+  def send_reservation_sms
+
+      puts "***********   " + @reservation.mobile
+
+      client = Textmagic::REST::Client.new 'benowen', 'UMVvGqt5y6ftjSx0FcGyzyBZJryPRG'
+
+      params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', Your reservation has been successful.'}
+
+      sent_message = client.messages.create(params)
+
+  end
 
   def send_text_message
 
@@ -13,7 +42,7 @@ class ReservationsController < ApplicationController
     # Send a text message
     # Any phone number that starts with 999 is a test phone number
     # The phones parameter can contain more than one number (comma delimited)
-    params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', The code for your room entry is '+@reservation.pinnumber+' please make a note of this. It will be valid for the next 20 hours'}
+    params = {phones: @reservation.mobile, text: 'Hello '+@reservation.customername+', The code for your room entry is '+@reservation.pinnumber+' please make a note of this. It will be valid 11am tomorrow'}
 
     # This next line creates and sends the message
     sent_message = client.messages.create(params)
@@ -68,9 +97,19 @@ class ReservationsController < ApplicationController
   end
 
   def add_res
+
+
+    
+
     @reservation = Reservation.new(reservation_params)
     @reservation.roomnumber = 200 + rand(299)
     @reservation.pinnumber = 1 + rand(9999)
+
+    response_str = '{  "roomnumber": "210", "pinnumber": "654321" }'
+
+#    update_data(response_str)
+
+    send_reservation_sms
 
     respond_to do |format|
       if @reservation.save
@@ -83,11 +122,25 @@ class ReservationsController < ApplicationController
     end
   end
 
+  def update_data(response_str)
+
+     response_json = JSON.parse(response_str)
+     puts_response = RestClient.post("http://pricefighter.enablingdigital.co.uk/reservations.json",
+         response_json.to_json,      # Re-encode the entire incident as JSON
+         {:content_type => 'application/json'})
+  end
+
   def check_in
     @reservation = Reservation.new
   end
 
   def check_in_customer
+    @reservation = Reservation.where(customername: reservation_params[:customername], mobile: reservation_params[:mobile]).first 
+    if @reservation.nil?
+      redirect_to check_in_path, notice: 'Reservation Not Found, please check reservation details.'
+    else
+      render action: 'check_in_customer', notice: 'Reservation was Successfully Found.'
+    end
   end
 
   # POST /reservations
