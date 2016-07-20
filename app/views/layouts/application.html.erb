@@ -5,22 +5,35 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Martel+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 </head>
-<body>
+<body id="font">
+      <nav id="navbar" class="navbar navbar-static-top navbar-light bg-inverse navbar-custom">
+        <!-- <%= image_tag "whitbread.png", class: "some css class here" %> -->
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <i class="fa fa-home fa-2x pull-xs-left" style="color: #FF585B; margin-top:6px;" aria-hidden="true"></i>
+              <h3 class="pull-xs-left" style=" margin-left:7px ; margin-top:11px; color: #363636;  font-weight: 600;">AirCabin</h3>
+            </div>
+          </div>
+          </div>
+        </div>
+      </nav>
+      <div class="border"></div>
+  <!-- <div class="container">
+    <div class="row"> -->
+      <!-- <div class="jumbotron big-banner">
+          <h1 class="display-3"></h1>
+      </div> -->
+    <!-- </div>
+  </div> -->
 
 
-    <nav class="navbar navbar-static-top navbar-dark bg-inverse navbar-custom">
-    	<%= image_tag "whitbread.png", class: "some css class here" %>
-    </nav>
+    <%= yield %>
 
-    <div class="jumbotron big-banner">
-      <div class="container">
-        <h1 class="display-3"></h1>
 
-      </div>
-    </div>
-
-<%= yield %>
 
 </body>
 </html>

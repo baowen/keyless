@@ -1,5 +1,14 @@
-<h1>Please Check In to Hotel Reservation</h1>
-
-<%= render 'check_in_form' %>
+<div class="checkinbackground" style="height: 700px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12" style="margin-top: 80px;">
+        <h1 id="fontwhite">Check-in to your cabin</h1>
+      </div>
+    </div>
+    <div>
+      <%= render 'check_in_form' %>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Back', reservations_path %>

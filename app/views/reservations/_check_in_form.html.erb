@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :customername %><br>
-    <%= f.text_field :customername %>
+  <div class="col-xs-12" id="fieldgroup">
+    <!-- <%= f.label :customername %><br> -->
+    <%= f.text_field :customername, :placeholder => "Your first name", :id => "input1" %>
   </div>
-  <div class="field">
-    <%= f.label :mobile %><br>
-    <%= f.text_field :mobile %>
-  </div>
-  <div class="actions">
+  <!-- <div class="col-xs-12" id="fieldgroup"> -->
+    <!-- <%= f.label :mobile %><br> -->
+    <!-- <%= f.text_field :mobile %> -->
+  <!-- </div> -->
+  <div class="col-xs-12" id="buttongroup">
     <%= f.submit "Check In" %>
   </div>
 <% end %>
