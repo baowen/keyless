@@ -3,14 +3,16 @@
 <div class="container">
   <div class="row">
     <div id="white" class="col-xs-12">
-<h3 id="checkedintitle">You're checked in</h3>
+<h1 id="checkedintitle">You're checked in <i id="smiley" class="fa fa-smile-o" aria-hidden="true"></i></h1>
 
-<span>
-  <%= @reservation.roomnumber %>
-</span>
+<h3 id="entry">Your room number: <%= @reservation.roomnumber %></h3>
+<h3 id="entry">Your room's pin: <%= @reservation.pinnumber %></h3>
 
-<p>
-  <strong>Customer Name:</strong>
+<div class="border">
+</div>
+
+<p id="topentry">
+  <strong>Your name:</strong>
   <%= @reservation.customername %>
 </p>
 
@@ -20,17 +22,12 @@
 </p>
 
 <p>
-  <strong>Room Number:</strong>
-  <%= @reservation.roomnumber %>
-</p>
-
-<p>
-  <strong>Check In Date:</strong>
+  <strong>Check in:</strong>
   <%= @reservation.startdatetime %>
 </p>
 
 <p>
-  <strong>Check Out Date:</strong>
+  <strong>Check out:</strong>
   <%= @reservation.enddatetime %>
 </p>
 
@@ -45,17 +42,46 @@
 </p>
 
 <p>
-  <strong>Cleanername:</strong>
-  <%= @reservation.cleanername %>
-</p>
-
-<p>
   <strong>Roomtype:</strong>
   <%= @reservation.roomtype %>
 </p>
-</div>
-</div>
-</div>
-</div>
 <%= link_to 'Edit', edit_reservation_path(@reservation) %> |
 <%= link_to 'Back', reservations_path %>
+<p></p>
+<p></p>
+<p></p>
+
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Product</th>
+      <th></th>
+      <th>Cost</th>
+      <th>Purchase</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Breakfast</th>
+      <td><%= image_tag('breakfast.jpg', class: "menu_icon") %></td>
+      <td>£3.20</td>
+      <td><a class="btn btn-primary" href="#" role="button">Buy</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Extra Towels</th>
+      <td><%= image_tag('towels.jpg', class: "menu_icon") %></td>
+      <td>£2.50</td>
+      <td><a class="btn btn-primary" href="#" role="button">Buy</a></td>
+    </tr>
+    <tr>
+      <th scope="row">Get Your Room Cleaned</th>
+      <td><%= image_tag('cleaning.jpg', class: "menu_icon") %></td>
+      <td>£5.00</td>
+      <td><a class="btn btn-primary" href="#" role="button">Buy</a></td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+  </div>
+</div>
