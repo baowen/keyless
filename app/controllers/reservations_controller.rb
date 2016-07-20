@@ -2,7 +2,7 @@ require 'rest-client'
 require 'json'
 
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :display_reservation_details, :check_in_customer, :send_text_message]
+  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :display_reservation_details, :send_text_message]
 
   def check_in_customer
 
@@ -135,6 +135,12 @@ class ReservationsController < ApplicationController
   end
 
   def check_in_customer
+    @reservation = Reservation.where(customername: reservation_params[:customername], mobile: reservation_params[:mobile]).first 
+    if @reservation.nil?
+      redirect_to check_in_path, notice: 'Reservation Not Found, please check reservation details.'
+    else
+      render action: 'check_in_customer', notice: 'Reservation was Successfully Found.'
+    end
   end
 
   # POST /reservations
