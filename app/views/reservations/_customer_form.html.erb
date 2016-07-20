@@ -1,4 +1,4 @@
-<%= form_for(@reservation) do |f| %>
+<%= form_for(@reservation, url: {action: "add_res"}) do |f| %>
   <% if @reservation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
@@ -12,24 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :customername %><br>
+    <%= f.label "Customer Name" %><br>
     <%= f.text_field :customername %>
   </div>
   <div class="field">
     <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.select(:location, ['Paddington Pricefighter', 'Reading Pricefighter']) %>
   </div>
   <div class="field">
-    <%= f.label :roomnumber %><br>
-    <%= f.text_field :roomnumber %>
+    <%= f.label "Start Date" %><br>
+    <%= f.date_select :startdatetime %>
   </div>
   <div class="field">
-    <%= f.label :startdatetime %><br>
-    <%= f.datetime_select :startdatetime %>
-  </div>
-  <div class="field">
-    <%= f.label :enddatetime %><br>
-    <%= f.datetime_select :enddatetime %>
+    <%= f.label "End Date" %><br>
+    <%= f.date_select :enddatetime %>
   </div>
   <div class="field">
     <%= f.label :mobile %><br>
@@ -37,9 +33,10 @@
   </div>
   <div class="field">
     <%= f.label :roomtype %><br>
-    <%= f.text_field :roomtype %>
+    <%= f.select(:roomtype, ['Single','Double']) %>
   </div>
+  <div id="reservation_id"></div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Request', :class => 'submit_id', :id => 'submit_id' %>
   </div>
 <% end %>

@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :send_text_message]
+  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :display_reservation_details, :check_in_customer, :send_text_message]
 
   def check_in_customer
 
@@ -72,6 +72,36 @@ class ReservationsController < ApplicationController
 
   # GET /reservations/1/edit
   def edit
+  end
+
+  def display_reservation_details 
+    puts "Yo!"
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def add_res
+    @reservation = Reservation.new(reservation_params)
+    @reservation.roomnumber = 200 + rand(299)
+    @reservation.pinnumber = 1 + rand(9999)
+
+    respond_to do |format|
+      if @reservation.save
+        format.html { redirect_to check_in_url, notice: 'Reservation was successfully updated.' }
+        format.json { render :display_reservation_details, status: :created, location: @reservation }
+      else
+        format.html { render :new }
+        format.json { render json: @reservation.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def check_in
+    @reservation = Reservation.new
+  end
+
+  def check_in_customer
   end
 
   # POST /reservations
