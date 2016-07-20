@@ -10,6 +10,12 @@ class ReservationsController < ApplicationController
 
   end
 
+  def get_received_messages
+
+     
+
+  end
+
   def send_text_message
 
     puts @reservation.mobile
